@@ -1,8 +1,14 @@
 # March-Scorecard-Excel-Template
 
+codex/build-march-scorecard-excel-template-t08umh
 This repository keeps source files in version control and generates the workbook artifact locally.
 
 ## Generate templates
+
+This repository is intentionally **text-only** (no committed binary workbook).
+
+## Generate deliverables
+main
 Run:
 
 ```bash
