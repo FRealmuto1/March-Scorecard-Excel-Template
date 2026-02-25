@@ -152,11 +152,11 @@ def build_scorecard():
     rows[11] += [c('B11', formula='IFERROR(Forecast!E8/Assumptions!B8,0)'), c('C11', formula='IFERROR(SUM(Daily_Inputs!I4:I35)/(C10*Assumptions!B7*Daily_Inputs!N2),0)'), c('D11', formula='C11'), c('E11', formula='C11'), c('F11', formula='E11-B11')]
 
     # AR row (non-cumulative)
-    rows[12] += [c('B12', formula='Assumptions!B13'), c('C12', ''), c('D12', ''), c('E12', ''), c('F12', '')]
+    rows[12] += [c('B12', formula='Assumptions!B13'), c('C12', ''), c('D12', ''), c('E12', ''), c('F12', formula='IF(B12="","",IF(C12="","",C12-B12))')]
 
     # Warranty rows using new targets
-    rows[13] += [c('B13', formula='Assumptions!B14'), c('C13', formula='SUM(Daily_Inputs!J4:J35)'), c('D13', formula='IFERROR(C13/Daily_Inputs!N2,0)'), c('E13', formula='D13*Assumptions!B5'), c('F13', formula='E13-B13')]
-    rows[14] += [c('B14', formula='Assumptions!B15'), c('C14', formula='SUM(Daily_Inputs!K4:K35)'), c('D14', formula='IFERROR(C14/Daily_Inputs!N2,0)'), c('E14', formula='D14*Assumptions!B5'), c('F14', formula='E14-B14')]
+    rows[13] += [c('B13', formula='Assumptions!B14'), c('C13', formula='SUM(Daily_Inputs!J4:J35)'), c('D13', formula='IFERROR(C13/Daily_Inputs!N2,0)'), c('E13', formula='D13*Assumptions!B5'), c('F13', formula='IF(B13="","",E13-B13)')]
+    rows[14] += [c('B14', formula='Assumptions!B15'), c('C14', formula='SUM(Daily_Inputs!K4:K35)'), c('D14', formula='IFERROR(C14/Daily_Inputs!N2,0)'), c('E14', formula='D14*Assumptions!B5'), c('F14', formula='IF(B14="","",E14-B14)')]
 
     cond = [
         '<conditionalFormatting sqref="F4:F11 F13:F14"><cfRule type="cellIs" dxfId="0" priority="1" operator="lessThan"><formula>0</formula></cfRule></conditionalFormatting>',
